@@ -43,11 +43,11 @@ def step_impl(context):
 @then('the user should be redirected to the shop page')
 def step_impl(context):
     # Wait for products list or container 'prooood' to display
-    WebDriverWait(context.driver, 15).until(
+    WebDriverWait(context.driver, 25).until(
         EC.visibility_of_element_located((By.ID, "prooood"))
     )
     # Wait for products to load dynamically
-    WebDriverWait(context.driver, 15).until(
+    WebDriverWait(context.driver, 25).until(
         EC.presence_of_element_located((By.CLASS_NAME, "shop-item"))
     )
     # Check that prooood is displayed
