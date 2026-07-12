@@ -1,0 +1,1033 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "E-Commerce Login",
+    "tags": [],
+    "location": "features/01_login.feature:1",
+    "status": "passed",
+    "description": "As a registered user\nI want to login to the e-commerce website\nSo that I can purchase products",
+    "elements": [
+      {
+        "type": "scenario",
+        "keyword": "Scenario",
+        "name": "Successful Login",
+        "tags": [
+          "web",
+          "login"
+        ],
+        "location": "features/01_login.feature:7",
+        "steps": [
+          {
+            "keyword": "Given",
+            "step_type": "given",
+            "name": "the user navigates to the e-commerce login page",
+            "location": "features/01_login.feature:8",
+            "match": {
+              "location": "features/steps/web_steps.py:12",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1576927662000000000
+            }
+          },
+          {
+            "keyword": "When",
+            "step_type": "when",
+            "name": "the user enters credentials \"admin@admin.com\" and \"admin123\"",
+            "location": "features/01_login.feature:9",
+            "match": {
+              "location": "features/steps/web_steps.py:20",
+              "arguments": [
+                {
+                  "value": "admin@admin.com",
+                  "name": "email"
+                },
+                {
+                  "value": "admin123",
+                  "name": "password"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 186499834000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "when",
+            "name": "the user takes a screenshot as \"01_login_filled\"",
+            "location": "features/01_login.feature:10",
+            "match": {
+              "location": "features/steps/web_steps.py:29",
+              "arguments": [
+                {
+                  "value": "01_login_filled",
+                  "name": "name"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 118548155000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "when",
+            "name": "the user clicks the login submit button",
+            "location": "features/01_login.feature:11",
+            "match": {
+              "location": "features/steps/web_steps.py:34",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 232780933000000000
+            }
+          },
+          {
+            "keyword": "Then",
+            "step_type": "then",
+            "name": "the user should be redirected to the shop page",
+            "location": "features/01_login.feature:12",
+            "match": {
+              "location": "features/steps/web_steps.py:43",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 37825346000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "then",
+            "name": "the user takes a screenshot as \"02_login_success\"",
+            "location": "features/01_login.feature:13",
+            "match": {
+              "location": "features/steps/web_steps.py:29",
+              "arguments": [
+                {
+                  "value": "02_login_success",
+                  "name": "name"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 71233749000000000
+            }
+          }
+        ],
+        "status": "passed",
+        "id": "successful-login"
+      }
+    ],
+    "uri": "features/01_login.feature"
+  },
+  {
+    "keyword": "Feature",
+    "name": "E-Commerce Product Checkout Flow",
+    "tags": [],
+    "location": "features/02_checkout.feature:1",
+    "status": "passed",
+    "description": "As a logged-in user\nI want to add products to the cart, modify their quantities, and complete the order\nSo that I can verify the checkout and shipping process",
+    "elements": [
+      {
+        "type": "scenario",
+        "keyword": "Scenario",
+        "name": "Successful Product Addition and Checkout Flow",
+        "tags": [
+          "web",
+          "checkout"
+        ],
+        "location": "features/02_checkout.feature:7",
+        "steps": [
+          {
+            "keyword": "Given",
+            "step_type": "given",
+            "name": "the user is logged in and on the shop page",
+            "location": "features/02_checkout.feature:8",
+            "match": {
+              "location": "features/steps/web_steps.py:57",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1768263578000000000
+            }
+          },
+          {
+            "keyword": "When",
+            "step_type": "when",
+            "name": "the user scrolls down to \"Gucci Bloom Eau de\"",
+            "location": "features/02_checkout.feature:9",
+            "match": {
+              "location": "features/steps/web_steps.py:66",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1014681816000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "when",
+            "name": "the user clicks \"Add to cart\" for Gucci Bloom (index 8)",
+            "location": "features/02_checkout.feature:10",
+            "match": {
+              "location": "features/steps/web_steps.py:76",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 564440250000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "when",
+            "name": "the user clicks \"Add to cart\" for the next item (index 9)",
+            "location": "features/02_checkout.feature:11",
+            "match": {
+              "location": "features/steps/web_steps.py:86",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 569390059000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "when",
+            "name": "the user scrolls back to the top",
+            "location": "features/02_checkout.feature:12",
+            "match": {
+              "location": "features/steps/web_steps.py:96",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1006599188000000000
+            }
+          },
+          {
+            "keyword": "Then",
+            "step_type": "then",
+            "name": "the user takes a screenshot as \"03_cart_items_added\"",
+            "location": "features/02_checkout.feature:13",
+            "match": {
+              "location": "features/steps/web_steps.py:29",
+              "arguments": [
+                {
+                  "value": "03_cart_items_added",
+                  "name": "name"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 71460962000000000
+            }
+          },
+          {
+            "keyword": "When",
+            "step_type": "when",
+            "name": "the user changes quantity of item 1 to \"2\"",
+            "location": "features/02_checkout.feature:14",
+            "match": {
+              "location": "features/steps/web_steps.py:113",
+              "arguments": [
+                {
+                  "value": "2",
+                  "name": "qty"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1175131321000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "when",
+            "name": "the user changes quantity of item 2 to \"3\"",
+            "location": "features/02_checkout.feature:15",
+            "match": {
+              "location": "features/steps/web_steps.py:118",
+              "arguments": [
+                {
+                  "value": "3",
+                  "name": "qty"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1153656960000000000
+            }
+          },
+          {
+            "keyword": "Then",
+            "step_type": "then",
+            "name": "the calculated total price should match the displayed price",
+            "location": "features/02_checkout.feature:16",
+            "match": {
+              "location": "features/steps/web_steps.py:123",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 82977772000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "then",
+            "name": "the user takes a screenshot as \"04_cart_quantities_changed\"",
+            "location": "features/02_checkout.feature:17",
+            "match": {
+              "location": "features/steps/web_steps.py:29",
+              "arguments": [
+                {
+                  "value": "04_cart_quantities_changed",
+                  "name": "name"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 61775923000000000
+            }
+          },
+          {
+            "keyword": "When",
+            "step_type": "when",
+            "name": "the user clicks the proceed to checkout button",
+            "location": "features/02_checkout.feature:18",
+            "match": {
+              "location": "features/steps/web_steps.py:162",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 88654280000000000
+            }
+          },
+          {
+            "keyword": "Then",
+            "step_type": "then",
+            "name": "the user takes a screenshot as \"05_shipping_page\"",
+            "location": "features/02_checkout.feature:19",
+            "match": {
+              "location": "features/steps/web_steps.py:29",
+              "arguments": [
+                {
+                  "value": "05_shipping_page",
+                  "name": "name"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 68255901000000000
+            }
+          },
+          {
+            "keyword": "When",
+            "step_type": "when",
+            "name": "the user fills the shipping details:",
+            "location": "features/02_checkout.feature:20",
+            "table": {
+              "headings": [
+                "Phone",
+                "Address",
+                "City",
+                "Country"
+              ],
+              "rows": [
+                [
+                  "12345678",
+                  "Pattaya",
+                  "Pty",
+                  "Thailand"
+                ]
+              ]
+            },
+            "match": {
+              "location": "features/steps/web_steps.py:174",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 231084585000000000
+            }
+          },
+          {
+            "keyword": "Then",
+            "step_type": "then",
+            "name": "the user takes a screenshot as \"06_shipping_details_filled\"",
+            "location": "features/02_checkout.feature:23",
+            "match": {
+              "location": "features/steps/web_steps.py:29",
+              "arguments": [
+                {
+                  "value": "06_shipping_details_filled",
+                  "name": "name"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 74047327000000000
+            }
+          },
+          {
+            "keyword": "When",
+            "step_type": "when",
+            "name": "the user clicks the submit order button",
+            "location": "features/02_checkout.feature:24",
+            "match": {
+              "location": "features/steps/web_steps.py:205",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47790289000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "when",
+            "name": "the user waits for 5 seconds",
+            "location": "features/02_checkout.feature:25",
+            "match": {
+              "location": "features/steps/web_steps.py:211",
+              "arguments": [
+                {
+                  "value": 5,
+                  "name": "seconds",
+                  "original": "5"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5000546455000000000
+            }
+          },
+          {
+            "keyword": "Then",
+            "step_type": "then",
+            "name": "the user takes a screenshot as \"07_order_completed\"",
+            "location": "features/02_checkout.feature:26",
+            "match": {
+              "location": "features/steps/web_steps.py:29",
+              "arguments": [
+                {
+                  "value": "07_order_completed",
+                  "name": "name"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 62573671000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "then",
+            "name": "the order confirmation message should match the shipping details",
+            "location": "features/02_checkout.feature:27",
+            "match": {
+              "location": "features/steps/web_steps.py:215",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 25961876000000000
+            }
+          },
+          {
+            "keyword": "When",
+            "step_type": "when",
+            "name": "the user clicks logout",
+            "location": "features/02_checkout.feature:28",
+            "match": {
+              "location": "features/steps/web_steps.py:239",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 376147270000000000
+            }
+          },
+          {
+            "keyword": "Then",
+            "step_type": "then",
+            "name": "the user takes a screenshot as \"08_logged_out\"",
+            "location": "features/02_checkout.feature:29",
+            "match": {
+              "location": "features/steps/web_steps.py:29",
+              "arguments": [
+                {
+                  "value": "08_logged_out",
+                  "name": "name"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 89524984000000000
+            }
+          }
+        ],
+        "status": "passed",
+        "id": "successful-product-addition-and-checkout-flow"
+      }
+    ],
+    "uri": "features/02_checkout.feature"
+  },
+  {
+    "keyword": "Feature",
+    "name": "E-Commerce Negative Shipping Details",
+    "tags": [],
+    "location": "features/03_shipping_neg.feature:1",
+    "status": "passed",
+    "description": "As a logged-in user on the shipping page\nI want to attempt to submit empty shipping details\nSo that I can verify field validation works correctly",
+    "elements": [
+      {
+        "type": "scenario",
+        "keyword": "Scenario",
+        "name": "Validate HTML5 required fields during shipping submit",
+        "tags": [
+          "web",
+          "negative"
+        ],
+        "location": "features/03_shipping_neg.feature:7",
+        "steps": [
+          {
+            "keyword": "Given",
+            "step_type": "given",
+            "name": "the user has products in cart and navigated to shipping page",
+            "location": "features/03_shipping_neg.feature:8",
+            "match": {
+              "location": "features/steps/web_steps.py:255",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8150052071000000000
+            }
+          },
+          {
+            "keyword": "When",
+            "step_type": "when",
+            "name": "the user clicks the submit order button without filling fields",
+            "location": "features/03_shipping_neg.feature:9",
+            "match": {
+              "location": "features/steps/web_steps.py:269",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 57944775000000000
+            }
+          },
+          {
+            "keyword": "Then",
+            "step_type": "then",
+            "name": "the page should not navigate",
+            "location": "features/03_shipping_neg.feature:10",
+            "match": {
+              "location": "features/steps/web_steps.py:276",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 49646854000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "then",
+            "name": "the native validation message \"Please fill out this field\" should be shown on shipping fields:",
+            "location": "features/03_shipping_neg.feature:11",
+            "table": {
+              "headings": [
+                "Element",
+                "XPath"
+              ],
+              "rows": [
+                [
+                  "Phone",
+                  "//*[@id=\"phone\"]"
+                ],
+                [
+                  "Address",
+                  "//*[@id=\"shippingForm\"]/div[2]/input"
+                ],
+                [
+                  "City",
+                  "//*[@id=\"shippingForm\"]/div[3]/input"
+                ],
+                [
+                  "Country",
+                  "//*[@id=\"countries_dropdown_menu\"]"
+                ]
+              ]
+            },
+            "match": {
+              "location": "features/steps/web_steps.py:287",
+              "arguments": [
+                {
+                  "value": "Please fill out this field",
+                  "name": "expected_message"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 80345392000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "then",
+            "name": "the user takes a screenshot as \"09_shipping_validation_errors\"",
+            "location": "features/03_shipping_neg.feature:17",
+            "match": {
+              "location": "features/steps/web_steps.py:29",
+              "arguments": [
+                {
+                  "value": "09_shipping_validation_errors",
+                  "name": "name"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 128252029000000000
+            }
+          }
+        ],
+        "status": "passed",
+        "id": "validate-html5-required-fields-during-shipping-submit"
+      }
+    ],
+    "uri": "features/03_shipping_neg.feature"
+  },
+  {
+    "keyword": "Feature",
+    "name": "Backend API Employee Verification",
+    "tags": [],
+    "location": "features/04_api.feature:1",
+    "status": "passed",
+    "description": "As a QA Engineer\nI want to verify the employee REST API endpoints\nSo that I can ensure backend services operate correctly",
+    "elements": [
+      {
+        "type": "scenario",
+        "keyword": "Scenario",
+        "name": "Create Employee successfully (Positive)",
+        "tags": [
+          "api"
+        ],
+        "location": "features/04_api.feature:7",
+        "steps": [
+          {
+            "keyword": "Given",
+            "step_type": "given",
+            "name": "the employee API is available at \"http://localhost:8887\"",
+            "location": "features/04_api.feature:8",
+            "match": {
+              "location": "features/steps/api_steps.py:11",
+              "arguments": [
+                {
+                  "value": "http://localhost:8887",
+                  "name": "base_url"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 894785000000000
+            }
+          },
+          {
+            "keyword": "When",
+            "step_type": "when",
+            "name": "the user sends a POST request to \"/api/v1/employees\" with:",
+            "location": "features/04_api.feature:9",
+            "table": {
+              "headings": [
+                "firstName",
+                "lastName",
+                "email"
+              ],
+              "rows": [
+                [
+                  "John",
+                  "Doe",
+                  "john.doe@test.com"
+                ]
+              ]
+            },
+            "match": {
+              "location": "features/steps/api_steps.py:15",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 269148350000000000
+            }
+          },
+          {
+            "keyword": "Then",
+            "step_type": "then",
+            "name": "the API response status code should be 201",
+            "location": "features/04_api.feature:12",
+            "match": {
+              "location": "features/steps/api_steps.py:35",
+              "arguments": [
+                {
+                  "value": 201,
+                  "name": "status_code",
+                  "original": "201"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 597715000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "then",
+            "name": "the response body should contain the created employee details and a new ID",
+            "location": "features/04_api.feature:13",
+            "match": {
+              "location": "features/steps/api_steps.py:41",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 114142179000000000
+            }
+          }
+        ],
+        "status": "passed",
+        "id": "create-employee-successfully--positive-"
+      },
+      {
+        "type": "scenario",
+        "keyword": "Scenario",
+        "name": "Create Employee with invalid email (Negative)",
+        "tags": [
+          "api"
+        ],
+        "location": "features/04_api.feature:16",
+        "steps": [
+          {
+            "keyword": "Given",
+            "step_type": "given",
+            "name": "the employee API is available at \"http://localhost:8887\"",
+            "location": "features/04_api.feature:17",
+            "match": {
+              "location": "features/steps/api_steps.py:11",
+              "arguments": [
+                {
+                  "value": "http://localhost:8887",
+                  "name": "base_url"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 556231000000000
+            }
+          },
+          {
+            "keyword": "When",
+            "step_type": "when",
+            "name": "the user sends a POST request to \"/api/v1/employees\" with:",
+            "location": "features/04_api.feature:18",
+            "table": {
+              "headings": [
+                "firstName",
+                "lastName",
+                "email"
+              ],
+              "rows": [
+                [
+                  "Jane",
+                  "Doe",
+                  "invalidemail"
+                ]
+              ]
+            },
+            "match": {
+              "location": "features/steps/api_steps.py:15",
+              "arguments": []
+            },
+            "result": {
+              "status": "passed",
+              "duration": 54888487000000000
+            }
+          },
+          {
+            "keyword": "Then",
+            "step_type": "then",
+            "name": "the API response status code should be 400",
+            "location": "features/04_api.feature:21",
+            "match": {
+              "location": "features/steps/api_steps.py:35",
+              "arguments": [
+                {
+                  "value": 400,
+                  "name": "status_code",
+                  "original": "400"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 488281000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "then",
+            "name": "the response validation message should mention \"must be a well-formed email address\"",
+            "location": "features/04_api.feature:22",
+            "match": {
+              "location": "features/steps/api_steps.py:64",
+              "arguments": [
+                {
+                  "value": "must be a well-formed email address",
+                  "name": "expected_message"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 364542000000000
+            }
+          }
+        ],
+        "status": "passed",
+        "id": "create-employee-with-invalid-email--negative-"
+      },
+      {
+        "type": "scenario",
+        "keyword": "Scenario",
+        "name": "Get Employee by ID (Positive)",
+        "tags": [
+          "api"
+        ],
+        "location": "features/04_api.feature:25",
+        "steps": [
+          {
+            "keyword": "Given",
+            "step_type": "given",
+            "name": "the employee API is available at \"http://localhost:8887\"",
+            "location": "features/04_api.feature:26",
+            "match": {
+              "location": "features/steps/api_steps.py:11",
+              "arguments": [
+                {
+                  "value": "http://localhost:8887",
+                  "name": "base_url"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 459433000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "given",
+            "name": "a valid employee exists and has ID 1",
+            "location": "features/04_api.feature:27",
+            "match": {
+              "location": "features/steps/api_steps.py:73",
+              "arguments": [
+                {
+                  "value": 1,
+                  "name": "emp_id",
+                  "original": "1"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 22972107000000000
+            }
+          },
+          {
+            "keyword": "When",
+            "step_type": "when",
+            "name": "the user sends a GET request to \"/api/v1/employees/1\"",
+            "location": "features/04_api.feature:28",
+            "match": {
+              "location": "features/steps/api_steps.py:85",
+              "arguments": [
+                {
+                  "value": 1,
+                  "name": "emp_id",
+                  "original": "1"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 38403749000000000
+            }
+          },
+          {
+            "keyword": "Then",
+            "step_type": "then",
+            "name": "the API response status code should be 200",
+            "location": "features/04_api.feature:29",
+            "match": {
+              "location": "features/steps/api_steps.py:35",
+              "arguments": [
+                {
+                  "value": 200,
+                  "name": "status_code",
+                  "original": "200"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 380516000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "then",
+            "name": "the response body should contain the employee details for ID 1",
+            "location": "features/04_api.feature:30",
+            "match": {
+              "location": "features/steps/api_steps.py:92",
+              "arguments": [
+                {
+                  "value": 1,
+                  "name": "emp_id",
+                  "original": "1"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 306845000000000
+            }
+          }
+        ],
+        "status": "passed",
+        "id": "get-employee-by-id--positive-"
+      },
+      {
+        "type": "scenario",
+        "keyword": "Scenario",
+        "name": "Get Employee by non-existing ID (Negative)",
+        "tags": [
+          "api"
+        ],
+        "location": "features/04_api.feature:33",
+        "steps": [
+          {
+            "keyword": "Given",
+            "step_type": "given",
+            "name": "the employee API is available at \"http://localhost:8887\"",
+            "location": "features/04_api.feature:34",
+            "match": {
+              "location": "features/steps/api_steps.py:11",
+              "arguments": [
+                {
+                  "value": "http://localhost:8887",
+                  "name": "base_url"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 423193000000000
+            }
+          },
+          {
+            "keyword": "When",
+            "step_type": "when",
+            "name": "the user sends a GET request to \"/api/v1/employees/9999\"",
+            "location": "features/04_api.feature:35",
+            "match": {
+              "location": "features/steps/api_steps.py:85",
+              "arguments": [
+                {
+                  "value": 9999,
+                  "name": "emp_id",
+                  "original": "9999"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 20491362000000000
+            }
+          },
+          {
+            "keyword": "Then",
+            "step_type": "then",
+            "name": "the API response status code should be 404",
+            "location": "features/04_api.feature:36",
+            "match": {
+              "location": "features/steps/api_steps.py:35",
+              "arguments": [
+                {
+                  "value": 404,
+                  "name": "status_code",
+                  "original": "404"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 458241000000000
+            }
+          },
+          {
+            "keyword": "And",
+            "step_type": "then",
+            "name": "the response error message should be \"Employee not found with ID 9999\"",
+            "location": "features/04_api.feature:37",
+            "match": {
+              "location": "features/steps/api_steps.py:99",
+              "arguments": [
+                {
+                  "value": "Employee not found with ID 9999",
+                  "name": "expected_message"
+                }
+              ]
+            },
+            "result": {
+              "status": "passed",
+              "duration": 310183000000000
+            }
+          }
+        ],
+        "status": "passed",
+        "id": "get-employee-by-non-existing-id--negative-"
+      }
+    ],
+    "uri": "features/04_api.feature"
+  }
+]

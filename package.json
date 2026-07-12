@@ -1,0 +1,12 @@
+{
+  "name": "cucumber-html-reporter-generator",
+  "version": "1.0.0",
+  "description": "HTML report generator for Cucumber JSON reports",
+  "main": "generate_report.js",
+  "scripts": {
+    "report": "node generate_report.js"
+  },
+  "dependencies": {
+    "cucumber-html-reporter": "^7.1.1"
+  }
+}

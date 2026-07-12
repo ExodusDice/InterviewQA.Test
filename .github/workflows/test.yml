@@ -1,0 +1,53 @@
+name: QA Automation Test Run
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Start API Service Container
+      run: |
+        docker run -d --rm --name qa-practice-api -p 8887:8081 rvancea/qa-practice-api:latest
+        echo "Waiting for backend API container to be healthy..."
+        timeout 60s bash -c 'until curl -sf http://localhost:8887/swagger-ui.html > /dev/null; do sleep 2; done'
+        echo "API container is up and running!"
+        
+    - name: Build Test Docker Image
+      run: |
+        docker build -t behave-selenium-tests .
+
+    - name: Run Behave Tests in Docker Container
+      run: |
+        # Create evidence folder on host to capture container output
+        mkdir -p evidence
+        # Run tests containerized. Using host network so container tests can resolve http://localhost:8887
+        docker run --rm --net=host -v "${{ github.workspace }}/evidence:/app/evidence" behave-selenium-tests
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install Node Dependencies
+      run: |
+        npm install
+
+    - name: Generate HTML Report
+      run: |
+        node generate_report.js
+
+    - name: Upload Test Evidence Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: qa-test-evidence
+        path: |
+          evidence/
