@@ -154,4 +154,4 @@ The project includes a pre-configured CI pipeline in `.github/workflows/test.yml
 3.  Builds the Python test Docker image.
 4.  Executes the tests inside the container using the host network.
 5.  Compiles the `cucumber-html-reporter` HTML dashboard.
-6.  Uploads the entire `evidence/` folder (HTML report + 9 screenshots) as run artifacts.
+6.  Uploads the entire evidence/ folder (including execution screenshots and the generated HTML dashboard) as workflow run artifacts.
