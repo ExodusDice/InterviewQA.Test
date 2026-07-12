@@ -11,9 +11,12 @@ from features.environment import take_screenshot
 
 @given('the user navigates to the e-commerce login page')
 def step_impl(context):
-    context.driver.get("https://qa-practice.razvanvancea.ro/auth_ecommerce.html")
+    try:
+        context.driver.get("https://qa-practice.razvanvancea.ro/auth_ecommerce.html")
+    except TimeoutException:
+        print("Page load timed out (e.g. slow CDNs/analytics). Proceeding since DOM is ready.")
     # Wait for email input to be present
-    WebDriverWait(context.driver, 10).until(
+    WebDriverWait(context.driver, 15).until(
         EC.presence_of_element_located((By.ID, "email"))
     )
 

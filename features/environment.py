@@ -5,8 +5,13 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
 def before_all(context):
-    # Ensure evidence folder exists
-    context.evidence_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "evidence"))
+    # Base evidence directory
+    context.base_evidence_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "evidence"))
+    os.makedirs(context.base_evidence_dir, exist_ok=True)
+    
+    # Unique timestamped folder inside evidence (Format: DDMMYYIIMMp, e.g. 1307261208am)
+    timestamp = time.strftime("%d%m%y%I%M%p").lower()
+    context.evidence_dir = os.path.join(context.base_evidence_dir, timestamp)
     os.makedirs(context.evidence_dir, exist_ok=True)
     
     # Determine if headless mode should be used
@@ -18,7 +23,7 @@ def before_scenario(context, scenario):
         return
 
     # Rate-limit mitigation for public test server
-    time.sleep(3)
+    time.sleep(6)
 
     # Setup Chrome options
     chrome_options = Options()
@@ -41,10 +46,24 @@ def before_scenario(context, scenario):
         context.driver = webdriver.Chrome(options=chrome_options)
         
     context.driver.implicitly_wait(10)
+    context.driver.set_page_load_timeout(15)
 
 def after_scenario(context, scenario):
     if hasattr(context, "driver") and context.driver:
         if scenario.status == "failed" or scenario.status == "errored":
+            # Automatically take screenshot on failure
+            try:
+                fail_name = f"failure_{scenario.name.replace(' ', '_').lower()}"
+                hist_path = os.path.join(context.evidence_dir, f"{fail_name}.png")
+                root_path = os.path.join(context.base_evidence_dir, f"{fail_name}.png")
+                context.driver.save_screenshot(hist_path)
+                context.driver.save_screenshot(root_path)
+                print(f"Saved failure screenshots to:")
+                print(f"  - History: {hist_path}")
+                print(f"  - Latest:  {root_path}")
+            except Exception as e:
+                print(f"Could not take failure screenshot: {e}")
+
             try:
                 print("\n--- BROWSER CONSOLE LOGS ---")
                 logs = context.driver.get_log('browser')
@@ -59,6 +78,14 @@ def after_scenario(context, scenario):
 def take_screenshot(context, screenshot_name):
     """Helper function to save screenshots as evidence."""
     if hasattr(context, "driver") and context.driver:
-        path = os.path.join(context.evidence_dir, f"{screenshot_name}.png")
-        context.driver.save_screenshot(path)
-        print(f"Screenshot saved to: {path}")
+        # Save in the timestamped folder for historical record
+        hist_path = os.path.join(context.evidence_dir, f"{screenshot_name}.png")
+        context.driver.save_screenshot(hist_path)
+        
+        # Save in the root evidence folder for HTML report and Word document compilation
+        root_path = os.path.join(context.base_evidence_dir, f"{screenshot_name}.png")
+        context.driver.save_screenshot(root_path)
+        
+        print(f"Screenshot saved to:")
+        print(f"  - History: {hist_path}")
+        print(f"  - Latest:  {root_path}")

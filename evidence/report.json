@@ -28,7 +28,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1645760775
+              "duration": 1593547106
             }
           },
           {
@@ -37,7 +37,7 @@
             "name": "the user enters credentials \"admin@admin.com\" and \"admin123\"",
             "location": "features/01_login.feature:9",
             "match": {
-              "location": "features/steps/web_steps.py:20",
+              "location": "features/steps/web_steps.py:23",
               "arguments": [
                 {
                   "value": "admin@admin.com",
@@ -51,7 +51,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 222970247
+              "duration": 336723566
             }
           },
           {
@@ -60,7 +60,7 @@
             "name": "the user takes a screenshot as \"01_login_filled\"",
             "location": "features/01_login.feature:10",
             "match": {
-              "location": "features/steps/web_steps.py:29",
+              "location": "features/steps/web_steps.py:32",
               "arguments": [
                 {
                   "value": "01_login_filled",
@@ -70,7 +70,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 141091824
+              "duration": 221792698
             }
           },
           {
@@ -79,12 +79,12 @@
             "name": "the user clicks the login submit button",
             "location": "features/01_login.feature:11",
             "match": {
-              "location": "features/steps/web_steps.py:34",
+              "location": "features/steps/web_steps.py:37",
               "arguments": []
             },
             "result": {
               "status": "passed",
-              "duration": 70740223
+              "duration": 70073605
             }
           },
           {
@@ -93,12 +93,12 @@
             "name": "the user should be redirected to the shop page",
             "location": "features/01_login.feature:12",
             "match": {
-              "location": "features/steps/web_steps.py:43",
+              "location": "features/steps/web_steps.py:46",
               "arguments": []
             },
             "result": {
               "status": "passed",
-              "duration": 163396835
+              "duration": 2678616524
             }
           },
           {
@@ -107,7 +107,7 @@
             "name": "the user takes a screenshot as \"02_login_success\"",
             "location": "features/01_login.feature:13",
             "match": {
-              "location": "features/steps/web_steps.py:29",
+              "location": "features/steps/web_steps.py:32",
               "arguments": [
                 {
                   "value": "02_login_success",
@@ -117,7 +117,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 65340042
+              "duration": 156985283
             }
           }
         ],
@@ -151,12 +151,12 @@
             "name": "the user is logged in and on the shop page",
             "location": "features/02_checkout.feature:8",
             "match": {
-              "location": "features/steps/web_steps.py:57",
+              "location": "features/steps/web_steps.py:60",
               "arguments": []
             },
             "result": {
               "status": "passed",
-              "duration": 11645094633
+              "duration": 2001235008
             }
           },
           {
@@ -165,12 +165,12 @@
             "name": "the user scrolls down to \"Gucci Bloom Eau de\"",
             "location": "features/02_checkout.feature:9",
             "match": {
-              "location": "features/steps/web_steps.py:66",
+              "location": "features/steps/web_steps.py:69",
               "arguments": []
             },
             "result": {
               "status": "passed",
-              "duration": 1023988724
+              "duration": 1015769482
             }
           },
           {
@@ -179,12 +179,12 @@
             "name": "the user clicks \"Add to cart\" for Gucci Bloom (index 8)",
             "location": "features/02_checkout.feature:10",
             "match": {
-              "location": "features/steps/web_steps.py:76",
+              "location": "features/steps/web_steps.py:79",
               "arguments": []
             },
             "result": {
               "status": "passed",
-              "duration": 589393616
+              "duration": 588566780
             }
           },
           {
@@ -193,12 +193,12 @@
             "name": "the user clicks \"Add to cart\" for the next item (index 9)",
             "location": "features/02_checkout.feature:11",
             "match": {
-              "location": "features/steps/web_steps.py:86",
+              "location": "features/steps/web_steps.py:89",
               "arguments": []
             },
             "result": {
               "status": "passed",
-              "duration": 558931112
+              "duration": 565041780
             }
           },
           {
@@ -207,12 +207,12 @@
             "name": "the user scrolls back to the top",
             "location": "features/02_checkout.feature:12",
             "match": {
-              "location": "features/steps/web_steps.py:96",
+              "location": "features/steps/web_steps.py:99",
               "arguments": []
             },
             "result": {
               "status": "passed",
-              "duration": 1005746841
+              "duration": 1008839130
             }
           },
           {
@@ -221,7 +221,7 @@
             "name": "the user takes a screenshot as \"03_cart_items_added\"",
             "location": "features/02_checkout.feature:13",
             "match": {
-              "location": "features/steps/web_steps.py:29",
+              "location": "features/steps/web_steps.py:32",
               "arguments": [
                 {
                   "value": "03_cart_items_added",
@@ -231,7 +231,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 98378181
+              "duration": 170521975
             }
           },
           {
@@ -240,7 +240,7 @@
             "name": "the user changes quantity of item 1 to \"2\"",
             "location": "features/02_checkout.feature:14",
             "match": {
-              "location": "features/steps/web_steps.py:113",
+              "location": "features/steps/web_steps.py:116",
               "arguments": [
                 {
                   "value": "2",
@@ -250,7 +250,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1339588881
+              "duration": 1204134464
             }
           },
           {
@@ -259,7 +259,7 @@
             "name": "the user changes quantity of item 2 to \"3\"",
             "location": "features/02_checkout.feature:15",
             "match": {
-              "location": "features/steps/web_steps.py:118",
+              "location": "features/steps/web_steps.py:121",
               "arguments": [
                 {
                   "value": "3",
@@ -269,7 +269,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1167545557
+              "duration": 1181309700
             }
           },
           {
@@ -278,12 +278,12 @@
             "name": "the calculated total price should match the displayed price",
             "location": "features/02_checkout.feature:16",
             "match": {
-              "location": "features/steps/web_steps.py:123",
+              "location": "features/steps/web_steps.py:126",
               "arguments": []
             },
             "result": {
               "status": "passed",
-              "duration": 78670979
+              "duration": 136144161
             }
           },
           {
@@ -292,7 +292,7 @@
             "name": "the user takes a screenshot as \"04_cart_quantities_changed\"",
             "location": "features/02_checkout.feature:17",
             "match": {
-              "location": "features/steps/web_steps.py:29",
+              "location": "features/steps/web_steps.py:32",
               "arguments": [
                 {
                   "value": "04_cart_quantities_changed",
@@ -302,7 +302,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 67176342
+              "duration": 158069134
             }
           },
           {
@@ -311,12 +311,12 @@
             "name": "the user clicks the proceed to checkout button",
             "location": "features/02_checkout.feature:18",
             "match": {
-              "location": "features/steps/web_steps.py:162",
+              "location": "features/steps/web_steps.py:165",
               "arguments": []
             },
             "result": {
               "status": "passed",
-              "duration": 89309454
+              "duration": 101044893
             }
           },
           {
@@ -325,7 +325,7 @@
             "name": "the user takes a screenshot as \"05_shipping_page\"",
             "location": "features/02_checkout.feature:19",
             "match": {
-              "location": "features/steps/web_steps.py:29",
+              "location": "features/steps/web_steps.py:32",
               "arguments": [
                 {
                   "value": "05_shipping_page",
@@ -335,7 +335,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 54158211
+              "duration": 140630960
             }
           },
           {
@@ -360,12 +360,12 @@
               ]
             },
             "match": {
-              "location": "features/steps/web_steps.py:174",
+              "location": "features/steps/web_steps.py:177",
               "arguments": []
             },
             "result": {
               "status": "passed",
-              "duration": 247000456
+              "duration": 282334805
             }
           },
           {
@@ -374,7 +374,7 @@
             "name": "the user takes a screenshot as \"06_shipping_details_filled\"",
             "location": "features/02_checkout.feature:23",
             "match": {
-              "location": "features/steps/web_steps.py:29",
+              "location": "features/steps/web_steps.py:32",
               "arguments": [
                 {
                   "value": "06_shipping_details_filled",
@@ -384,7 +384,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 97235441
+              "duration": 187769413
             }
           },
           {
@@ -393,12 +393,12 @@
             "name": "the user clicks the submit order button",
             "location": "features/02_checkout.feature:24",
             "match": {
-              "location": "features/steps/web_steps.py:205",
+              "location": "features/steps/web_steps.py:208",
               "arguments": []
             },
             "result": {
               "status": "passed",
-              "duration": 47589302
+              "duration": 63842773
             }
           },
           {
@@ -407,7 +407,7 @@
             "name": "the user waits for 5 seconds",
             "location": "features/02_checkout.feature:25",
             "match": {
-              "location": "features/steps/web_steps.py:211",
+              "location": "features/steps/web_steps.py:214",
               "arguments": [
                 {
                   "value": 5,
@@ -418,7 +418,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5001390219
+              "duration": 5001243830
             }
           },
           {
@@ -427,7 +427,7 @@
             "name": "the user takes a screenshot as \"07_order_completed\"",
             "location": "features/02_checkout.feature:26",
             "match": {
-              "location": "features/steps/web_steps.py:29",
+              "location": "features/steps/web_steps.py:32",
               "arguments": [
                 {
                   "value": "07_order_completed",
@@ -437,7 +437,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 51753521
+              "duration": 933817148
             }
           },
           {
@@ -446,12 +446,12 @@
             "name": "the order confirmation message should match the shipping details",
             "location": "features/02_checkout.feature:27",
             "match": {
-              "location": "features/steps/web_steps.py:215",
+              "location": "features/steps/web_steps.py:218",
               "arguments": []
             },
             "result": {
               "status": "passed",
-              "duration": 27783155
+              "duration": 34932613
             }
           },
           {
@@ -460,12 +460,12 @@
             "name": "the user clicks logout",
             "location": "features/02_checkout.feature:28",
             "match": {
-              "location": "features/steps/web_steps.py:239",
+              "location": "features/steps/web_steps.py:242",
               "arguments": []
             },
             "result": {
               "status": "passed",
-              "duration": 448117256
+              "duration": 421337128
             }
           },
           {
@@ -474,7 +474,7 @@
             "name": "the user takes a screenshot as \"08_logged_out\"",
             "location": "features/02_checkout.feature:29",
             "match": {
-              "location": "features/steps/web_steps.py:29",
+              "location": "features/steps/web_steps.py:32",
               "arguments": [
                 {
                   "value": "08_logged_out",
@@ -484,7 +484,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 99304914
+              "duration": 225653887
             }
           }
         ],
@@ -518,12 +518,12 @@
             "name": "the user has products in cart and navigated to shipping page",
             "location": "features/03_shipping_neg.feature:8",
             "match": {
-              "location": "features/steps/web_steps.py:255",
+              "location": "features/steps/web_steps.py:258",
               "arguments": []
             },
             "result": {
               "status": "passed",
-              "duration": 7685950518
+              "duration": 12357953310
             }
           },
           {
@@ -532,12 +532,12 @@
             "name": "the user clicks the submit order button without filling fields",
             "location": "features/03_shipping_neg.feature:9",
             "match": {
-              "location": "features/steps/web_steps.py:269",
+              "location": "features/steps/web_steps.py:272",
               "arguments": []
             },
             "result": {
               "status": "passed",
-              "duration": 70545435
+              "duration": 125212193
             }
           },
           {
@@ -546,12 +546,12 @@
             "name": "the page should not navigate",
             "location": "features/03_shipping_neg.feature:10",
             "match": {
-              "location": "features/steps/web_steps.py:276",
+              "location": "features/steps/web_steps.py:279",
               "arguments": []
             },
             "result": {
               "status": "passed",
-              "duration": 45932770
+              "duration": 70003033
             }
           },
           {
@@ -584,7 +584,7 @@
               ]
             },
             "match": {
-              "location": "features/steps/web_steps.py:287",
+              "location": "features/steps/web_steps.py:290",
               "arguments": [
                 {
                   "value": "Please fill out this field",
@@ -594,7 +594,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 88201523
+              "duration": 164380789
             }
           },
           {
@@ -603,7 +603,7 @@
             "name": "the user takes a screenshot as \"09_shipping_validation_errors\"",
             "location": "features/03_shipping_neg.feature:17",
             "match": {
-              "location": "features/steps/web_steps.py:29",
+              "location": "features/steps/web_steps.py:32",
               "arguments": [
                 {
                   "value": "09_shipping_validation_errors",
@@ -613,7 +613,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 114058018
+              "duration": 766463995
             }
           }
         ],
@@ -656,7 +656,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 616074
+              "duration": 921965
             }
           },
           {
@@ -684,7 +684,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1342899799
+              "duration": 1215125799
             }
           },
           {
@@ -704,7 +704,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 372171
+              "duration": 374317
             }
           },
           {
@@ -718,7 +718,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 299705744
+              "duration": 467955828
             }
           }
         ],
@@ -750,7 +750,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 471115
+              "duration": 741720
             }
           },
           {
@@ -778,7 +778,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 106032133
+              "duration": 409391642
             }
           },
           {
@@ -798,7 +798,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 506163
+              "duration": 454664
             }
           },
           {
@@ -817,7 +817,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 347614
+              "duration": 300646
             }
           }
         ],
@@ -849,7 +849,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 423670
+              "duration": 479937
             }
           },
           {
@@ -869,7 +869,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 19295931
+              "duration": 101113558
             }
           },
           {
@@ -889,7 +889,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 63426018
+              "duration": 107712030
             }
           },
           {
@@ -909,7 +909,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 427723
+              "duration": 402927
             }
           },
           {
@@ -929,7 +929,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 319004
+              "duration": 320673
             }
           }
         ],
@@ -961,7 +961,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 445127
+              "duration": 459194
             }
           },
           {
@@ -981,7 +981,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 25511503
+              "duration": 55285454
             }
           },
           {
@@ -1001,7 +1001,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 560760
+              "duration": 514746
             }
           },
           {
@@ -1020,7 +1020,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 333071
+              "duration": 299931
             }
           }
         ],

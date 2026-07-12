@@ -20,6 +20,7 @@ evidence/*.png
 evidence/*.jpg
 evidence/*.jpeg
 evidence/cucumber_report.html
+evidence/*/
 
 # Office temporary files (Microsoft Word locks)
 ~$*
