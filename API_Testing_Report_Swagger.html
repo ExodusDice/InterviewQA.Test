@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swagger UI - API Testing Report</title>
+    <style>
+        body {
+            font-family: "Open Sans", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fafafa;
+            color: #3b4151;
+        }
+        /* Topbar Header Style */
+        .topbar {
+            background-color: #1b1b1b;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .topbar .logo {
+            display: flex;
+            align-items: center;
+        }
+        .topbar .logo img {
+            height: 35px;
+            margin-right: 10px;
+        }
+        .topbar .logo span {
+            color: #49cc90;
+            font-size: 24px;
+            font-weight: bold;
+            font-family: monospace;
+        }
+        .topbar .search-box {
+            display: flex;
+            align-items: center;
+        }
+        .topbar .search-box input {
+            padding: 8px 10px;
+            width: 300px;
+            border: 2px solid #547f00;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            font-size: 14px;
+        }
+        .topbar .search-box button {
+            padding: 8px 20px;
+            background-color: #547f00;
+            color: white;
+            border: 2px solid #547f00;
+            border-left: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Container & Info section */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .info {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e8e8e8;
+            padding-bottom: 20px;
+        }
+        .info h1 {
+            font-size: 36px;
+            margin: 0 0 10px 0;
+        }
+        .info h1 .version {
+            font-size: 14px;
+            background-color: #7d8492;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 20px;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+        .info .base-url {
+            font-family: monospace;
+            background-color: #e8e8e8;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .info p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #3b4151;
+        }
+
+        /* Server dropdown selection */
+        .servers {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .servers label {
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .servers select {
+            padding: 6px 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            min-width: 300px;
+        }
+
+        /* Tag header section */
+        .tag-section {
+            margin-top: 40px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .tag-section h2 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .tag-section p {
+            margin: 5px 0 0 0;
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* Swagger Collapsible Operations Style */
+        .opblock {
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: white;
+        }
+        .opblock summary {
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            list-style: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .opblock summary::-webkit-details-marker {
+            display: none;
+        }
+        .opblock-badge {
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 3px;
+            text-align: center;
+            min-width: 80px;
+            margin-right: 15px;
+            text-transform: uppercase;
+        }
+        .opblock-path {
+            font-family: monospace;
+            font-size: 16px;
+            margin-right: 20px;
+            flex-grow: 1;
+        }
+        .opblock-summary {
+            font-size: 14px;
+            color: #555;
+            font-weight: normal;
+        }
+
+        /* POST Specific Styles */
+        .opblock-post {
+            border-color: #49cc90;
+        }
+        .opblock-post summary {
+            background-color: rgba(73, 204, 144, 0.1);
+        }
+        .opblock-post .opblock-badge {
+            background-color: #49cc90;
+        }
+        .opblock-post .opblock-path {
+            color: #1b1b1b;
+        }
+
+        /* GET Specific Styles */
+        .opblock-get {
+            border-color: #61affe;
+        }
+        .opblock-get summary {
+            background-color: rgba(97, 175, 254, 0.1);
+        }
+        .opblock-get .opblock-badge {
+            background-color: #61affe;
+        }
+        .opblock-get .opblock-path {
+            color: #1b1b1b;
+        }
+
+        /* Inside Expanded Operation block */
+        .opblock-body {
+            padding: 20px;
+            border-top: 1px solid #ccc;
+        }
+        .opblock-body-post {
+            border-color: #49cc90;
+            background-color: rgba(73, 204, 144, 0.02);
+        }
+        .opblock-body-get {
+            border-color: #61affe;
+            background-color: rgba(97, 175, 254, 0.02);
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        /* Parameter Table Styling */
+        table.parameters-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table.parameters-table th, table.parameters-table td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+        table.parameters-table th {
+            font-weight: bold;
+            background-color: #f7f7f7;
+            color: #555;
+        }
+        .param-name {
+            font-family: monospace;
+            font-weight: bold;
+            color: #3b4151;
+        }
+        .param-required {
+            color: red;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .param-type {
+            font-family: monospace;
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* JSON Code Blocks */
+        pre {
+            background-color: #2b2b2b;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        .json-key { color: #f92672; }
+        .json-val { color: #a6e22e; }
+        .json-string { color: #e6db74; }
+        .json-num { color: #ae81ff; }
+
+        /* Test Executions Section */
+        .test-execution-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 15px;
+            padding: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .test-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .test-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+        .status-badge {
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+        .status-passed {
+            background-color: #49cc90;
+        }
+        .status-failed {
+            background-color: #f93e3e;
+        }
+        .test-details {
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        /* Tab panels */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+        .tab-btn {
+            padding: 8px 16px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            color: #888;
+            outline: none;
+        }
+        .tab-btn.active {
+            color: #3b4151;
+            border-bottom: 2px solid #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header bar styled like Swagger UI -->
+    <div class="topbar">
+        <div class="logo">
+            <svg width="35" height="35" viewBox="0 0 120 120" style="margin-right: 12px;">
+                <rect width="120" height="120" rx="20" fill="#85ea2d"/>
+                <path d="M30,30 L90,30 L90,90 L30,90 Z" fill="none" stroke="#1b1b1b" stroke-width="12"/>
+                <circle cx="60" cy="60" r="18" fill="#1b1b1b"/>
+            </svg>
+            <span>swagger</span>
+        </div>
+        <div class="search-box">
+            <input type="text" value="http://localhost:8887/v3/api-docs" readonly>
+            <button>Explore</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Project Swagger info -->
+        <div class="info">
+            <h1>Finkub QA Testing API Report <span class="version">1.0.0</span></h1>
+            <p>
+                This report documents the automation testing execution and coverage performed on the Mock Employee REST API database. 
+                The test suite was run natively inside a Docker container, executing <strong>Gherkin statements</strong> powered by Python's 
+                <strong>Behave</strong> BDD Cucumber framework.
+            </p>
+            <div class="servers">
+                <label for="server-select">Servers</label>
+                <select id="server-select">
+                    <option value="http://localhost:8887">http://localhost:8887 - Local Employee Mock API Container</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Tag Section -->
+        <div class="tag-section">
+            <h2>employee-controller</h2>
+            <p>Employee Controller endpoints verified by the Cucumber automation suite</p>
+        </div>
+
+        <!-- Endpoint 1: POST /api/v1/employees -->
+        <details class="opblock opblock-post">
+            <summary>
+                <span class="opblock-badge">post</span>
+                <span class="opblock-path">/api/v1/employees</span>
+                <span class="opblock-summary">Create a new employee record (Positive & Negative validation)</span>
+            </summary>
+            
+            <div class="opblock-body opblock-body-post">
+                <!-- Request schema -->
+                <div class="section-title">Request Body Schema (application/json)</div>
+                <pre>{
+  <span class="json-key">"firstName"</span>: <span class="json-string">"string (Required)"</span>,
+  <span class="json-key">"lastName"</span>: <span class="json-string">"string (Required)"</span>,
+  <span class="json-key">"email"</span>: <span class="json-string">"string (Required, Must be valid format)"</span>
+}</pre>
+
+                <!-- Test Runs -->
+                <div class="section-title" style="margin-top: 25px;">Automated Test Executions (Cucumber Results)</div>
+                
+                <!-- POST Test 1 (Positive) -->
+                <div class="test-execution-box">
+                    <div class="test-header">
+                        <span class="test-title">Scenario: Create Employee successfully (Positive)</span>
+                        <span class="status-badge status-passed">passed</span>
+                    </div>
+                    <div class="test-details">
+                        <p><strong>Steps:</strong></p>
+                        <ul>
+                            <li><strong>Given</strong> the employee API is available at "http://localhost:8887"</li>
+                            <li><strong>When</strong> the user sends a POST request with payload:
+                                <pre>{
+  <span class="json-key">"firstName"</span>: <span class="json-string">"John"</span>,
+  <span class="json-key">"lastName"</span>: <span class="json-string">"Doe"</span>,
+  <span class="json-key">"email"</span>: <span class="json-string">"john.doe@test.com"</span>
+}</pre>
+                            </li>
+                            <li><strong>Then</strong> the API response status code should be <strong>201</strong> (Created)</li>
+                            <li><strong>And</strong> the database is checked (GET `/api/v1/employees`) and confirms the email 'john.doe@test.com' has been saved and assigned a new unique ID.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- POST Test 2 (Negative) -->
+                <div class="test-execution-box">
+                    <div class="test-header">
+                        <span class="test-title">Scenario: Create Employee with invalid email (Negative)</span>
+                        <span class="status-badge status-passed">passed</span>
+                    </div>
+                    <div class="test-details">
+                        <p><strong>Steps:</strong></p>
+                        <ul>
+                            <li><strong>Given</strong> the employee API is available at "http://localhost:8887"</li>
+                            <li><strong>When</strong> the user sends a POST request with an invalid email payload:
+                                <pre>{
+  <span class="json-key">"firstName"</span>: <span class="json-string">"Jane"</span>,
+  <span class="json-key">"lastName"</span>: <span class="json-string">"Doe"</span>,
+  <span class="json-key">"email"</span>: <span class="json-string">"invalidemail"</span>
+}</pre>
+                            </li>
+                            <li><strong>Then</strong> the API response status code should be <strong>400</strong> (Bad Request)</li>
+                            <li><strong>And</strong> the response JSON body's default message contains: <code style="background:#e8e8e8; padding: 2px 5px; border-radius:3px;">"must be a well-formed email address"</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </details>
+
+        <!-- Endpoint 2: GET /api/v1/employees/{id} -->
+        <details class="opblock opblock-get">
+            <summary>
+                <span class="opblock-badge">get</span>
+                <span class="opblock-path">/api/v1/employees/{id}</span>
+                <span class="opblock-summary">Fetch an employee record by their ID (Positive & Negative validation)</span>
+            </summary>
+            
+            <div class="opblock-body opblock-body-get">
+                <!-- Parameters -->
+                <div class="section-title">Parameters</div>
+                <table class="parameters-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="param-name">id <span class="param-required">* required</span><br><span class="param-type">integer (path)</span></td>
+                            <td>The unique integer ID of the employee record to retrieve.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Test Runs -->
+                <div class="section-title" style="margin-top: 25px;">Automated Test Executions (Cucumber Results)</div>
+                
+                <!-- GET Test 1 (Positive) -->
+                <div class="test-execution-box">
+                    <div class="test-header">
+                        <span class="test-title">Scenario: Get Employee by ID (Positive)</span>
+                        <span class="status-badge status-passed">passed</span>
+                    </div>
+                    <div class="test-details">
+                        <p><strong>Steps:</strong></p>
+                        <ul>
+                            <li><strong>Given</strong> the employee API is available at "http://localhost:8887"</li>
+                            <li><strong>And</strong> a valid employee exists and has ID 1</li>
+                            <li><strong>When</strong> the user sends a GET request to "/api/v1/employees/1"</li>
+                            <li><strong>Then</strong> the API response status code should be <strong>200</strong> (OK)</li>
+                            <li><strong>And</strong> the response body contains the correct employee details:
+                                <pre>{
+  <span class="json-key">"id"</span>: <span class="json-num">1</span>,
+  <span class="json-key">"firstName"</span>: <span class="json-string">"John"</span>,
+  <span class="json-key">"lastName"</span>: <span class="json-string">"Doe"</span>,
+  <span class="json-key">"email"</span>: <span class="json-string">"john.doe@test.com"</span>
+}</pre>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- GET Test 2 (Negative) -->
+                <div class="test-execution-box">
+                    <div class="test-header">
+                        <span class="test-title">Scenario: Get Employee by non-existing ID (Negative)</span>
+                        <span class="status-badge status-passed">passed</span>
+                    </div>
+                    <div class="test-details">
+                        <p><strong>Steps:</strong></p>
+                        <ul>
+                            <li><strong>Given</strong> the employee API is available at "http://localhost:8887"</li>
+                            <li><strong>When</strong> the user sends a GET request to "/api/v1/employees/9999"</li>
+                            <li><strong>Then</strong> the API response status code should be <strong>404</strong> (Not Found)</li>
+                            <li><strong>And</strong> the plain-text error response body exactly matches: <code style="background:#e8e8e8; padding: 2px 5px; border-radius:3px; font-family:monospace;">"Employee not found with ID 9999"</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </details>
+    </div>
+
+</body>
+</html>
