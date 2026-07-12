@@ -1,0 +1,33 @@
+# Node dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python compiled files and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+ENV/
+env/
+
+# WebDriver logs and screenshots (kept in local evidence, but report.json can be tracked)
+evidence/*.png
+evidence/*.jpg
+evidence/*.jpeg
+evidence/cucumber_report.html
+
+# Office temporary files (Microsoft Word locks)
+~$*
+
+# IDE settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
