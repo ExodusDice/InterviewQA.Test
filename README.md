@@ -38,30 +38,55 @@ Finkub Project/
 
 ---
 
-## Test Scenarios Covered
+## 1. The Goal: What does this suite actually test?
 
-### 1. Web UI Tests (E-Commerce Platform)
-The UI tests target the public environment `https://qa-practice.razvanvancea.ro/auth_ecommerce.html`:
-*   **Scenario 1 (Successful Login)**: Navigates to the login page, enters credentials (`admin@admin.com`/`admin123`), takes a screenshot, submits, and verifies redirection to the shop. Saves screenshot evidence of success.
-*   **Scenario 2 (Shopping Flow & Checkout)**:
-    *   Scrolls down to the product "Gucci Bloom Eau de".
-    *   Clicks "Add to cart" for product index 8 (Dior J'adore) and index 9 (Dolce Shine Eau de) using the requested XPath selectors.
-    *   Scrolls back to top and takes a screenshot.
-    *   Modifies quantities of item 1 to `2` and item 2 to `3` in the cart inputs.
-    *   Verifies that the calculated total price (Unit Price * Quantity) matches the total price displayed in the cart span.
-    *   Proceeds to checkout, inputs shipping details (Phone, Address: Pattaya, City: Pty, Country: Thailand), and submits order.
-    *   Waits 5 seconds and validates the message: `Congrats! Your order of $389.95 has been registered and will be shipped to Pattaya, Pty - Thailand.`.
-    *   Logs out and saves screenshots at each critical milestone.
-*   **Scenario 3 (Negative Shipping Details)**: Attempts to submit the shipping details form with empty inputs and verifies that HTML5 native validation blocks form submission (checks native validation messages on required input elements).
+This automation suite is designed to fully validate user-facing E-Commerce purchase flows and verify the backend employee database REST API endpoints. Below is the detailed list of test cases covered by the suite:
 
-### 2. Backend REST API Tests
-The API tests target the mock backend container running on `http://localhost:8887`:
-*   **POST /api/v1/employees**:
-    *   *Positive*: Creates a new employee (returns 201 Created), then validates that the employee is stored in the database by checking the `GET /api/v1/employees` endpoint.
-    *   *Negative*: Attempts creation with an invalid email format (e.g. `invalidemail`), verifies response status is 400 Bad Request, and validates the `defaultMessage` containing `"must be a well-formed email address"`.
-*   **GET /api/v1/employees/{id}**:
-    *   *Positive*: Fetches an existing employee ID (status 200) and asserts their name.
-    *   *Negative*: Fetches a non-existing employee ID (e.g. `9999`), asserts status 404, and validates the plain text message `"Employee not found with ID 9999"`.
+### A. Web UI Browser Automation (E-Commerce Platform)
+*   **Scenario 1: Successful Login**
+    *   Navigates to the e-commerce login page.
+    *   Enters valid credentials (`admin@admin.com` / `admin123`).
+    *   Takes screenshot evidence of filled credentials (`evidence/01_login_filled.png`).
+    *   Clicks the login submit button.
+    *   Verifies successful redirection to the main shop page by checking that the products catalog has loaded.
+    *   Takes a screenshot of the landing catalog page (`evidence/02_login_success.png`).
+*   **Scenario 2: Successful Product Addition, Quantity Modification, and Checkout**
+    *   Navigates to the shop page and scrolls down to locate the element "Gucci Bloom Eau de".
+    *   Clicks "Add to cart" for product index 8 (Dior J'adore) and index 9 (Dolce Shine) using the required XPath selectors.
+    *   Scrolls back to the top and captures screenshot evidence (`evidence/03_cart_items_added.png`).
+    *   Modifies the quantities in the shopping cart (item 1 changed to "2" and item 2 changed to "3").
+    *   Dynamically calculates the expected total price based on unit prices and quantities, and asserts that the calculated sum matches the displayed UI cart total ($389.95).
+    *   Captures screenshot evidence of the updated quantities and totals (`evidence/04_cart_quantities_changed.png`).
+    *   Clicks the "Proceed to Checkout" button.
+    *   Fills in the shipping address details (Phone: `12345678`, Address: `Pattaya`, City: `Pty`, Country: `Thailand`).
+    *   Captures screenshot evidence of the filled checkout form (`evidence/06_shipping_details_filled.png`).
+    *   Clicks the "Submit Order" button.
+    *   Waits for 5 seconds to allow order processing and captures screenshot evidence of the final completion (`evidence/07_order_completed.png`).
+    *   Asserts that the registration confirmation message exactly matches the delivery details.
+    *   Clicks the logout button and captures screenshot evidence of the redirected login page (`evidence/08_logged_out.png`).
+*   **Scenario 3: Negative Shipping Validation**
+    *   Navigates to the checkout page with items in the cart.
+    *   Attempts to click "Submit Order" without filling in the required inputs.
+    *   Asserts that the browser natively blocks the form submission (checks HTML5 native required field validation tooltips: "Please fill out this field").
+    *   Captures screenshot evidence of the browser validation tooltips (`evidence/09_shipping_validation_errors.png`).
+
+### B. Backend REST API Validation (Employee Mock Database)
+*   **Scenario 4: Create Employee successfully (Positive)**
+    *   Sends a `POST` request to `/api/v1/employees` with a valid JSON payload containing first name, last name, and email.
+    *   Asserts that the response status code is `201 Created`.
+    *   Sends a `GET` request to `/api/v1/employees` and verifies that the new employee entry is present in the database, verifying the auto-generated unique ID.
+*   **Scenario 5: Create Employee with invalid email (Negative)**
+    *   Sends a `POST` request to `/api/v1/employees` with an invalid email address (e.g. `invalidemail`).
+    *   Asserts that the response status code is `400 Bad Request`.
+    *   Verifies that the JSON response body contains the validation error message `"must be a well-formed email address"`.
+*   **Scenario 6: Get Employee by ID (Positive)**
+    *   Sends a `GET` request to `/api/v1/employees/1` (fetching a valid existing employee).
+    *   Asserts that the response status code is `200 OK`.
+    *   Verifies that the returned JSON body contains the correct employee details corresponding to ID 1.
+*   **Scenario 7: Get Employee by non-existing ID (Negative)**
+    *   Sends a `GET` request to `/api/v1/employees/9999` (fetching an invalid/missing employee).
+    *   Asserts that the response status code is `404 Not Found`.
+    *   Verifies that the plain-text response body matches the error message `"Employee not found with ID 9999"`.
 
 ---
 
